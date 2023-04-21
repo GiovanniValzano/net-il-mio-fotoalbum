@@ -1,0 +1,11 @@
+﻿@model Photo[]
+@{
+    var photos = Model;
+}
+
+<div class="portfolio-container">
+    @foreach (var photo in photos)
+    {
+        @await Html.PartialAsync("_Card", photo)
+    }
+</div>

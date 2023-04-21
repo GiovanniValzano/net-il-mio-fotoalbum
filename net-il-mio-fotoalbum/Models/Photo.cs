@@ -17,7 +17,7 @@ namespace net_il_mio_fotoalbum.Models
 
         [Required(ErrorMessage = "Inserire un riferimento per la foto")]
         public string ImgSrc { get; set; } = string.Empty;
-        public bool Visible { get; set; }
+        public bool Visible { get; set; } = false;
 
         public List<Category> Categories { get; set; } = new List<Category>();
     }

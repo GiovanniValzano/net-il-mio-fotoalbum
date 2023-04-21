@@ -1,0 +1,11 @@
+﻿@model Photo
+@{
+    var photo = Model;
+}
+
+<div class="personal-card">
+    <a href="@Url.Action("Detail",new { Id = photo.Id})"><img src="@photo.ImgSrc" /></a>
+    <div class="text-container">
+        <h2>@photo.Title</h2>
+    </div>
+</div>
