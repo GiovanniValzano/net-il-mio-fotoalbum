@@ -3,9 +3,12 @@
     var photos = Model;
 }
 
-<div class="portfolio-container">
-    @foreach (var photo in photos)
-    {
-        @await Html.PartialAsync("_Card", photo)
-    }
+<div class="content-container">
+    @await Html.PartialAsync("_Navbar")
+    <div class="portfolio-container">
+        @foreach (var photo in photos)
+        {
+            @await Html.PartialAsync("_Card", photo)
+        }
+    </div>
 </div>

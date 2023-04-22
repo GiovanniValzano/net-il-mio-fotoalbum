@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Models;
+using System.Data;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
@@ -33,10 +35,42 @@ namespace net_il_mio_fotoalbum.Controllers
 
             if (photo is null)
             {
-                return NotFound($"Post with id {id} not found.");
+                return NotFound($"Foto con id {id} non trovata.");
             }
 
             return View(photo);
+        }
+
+        public IActionResult Create()
+        {
+            using var ctx = new PhotoContext();
+            var formModel = new PhotoFormModel
+            {
+                Categories = ctx.Categories.ToArray(),
+            };
+
+            return View(formModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(PhotoFormModel form)
+        {
+            using var ctx = new PhotoContext();
+
+            if (!ModelState.IsValid)
+            {
+                form.Categories = ctx.Categories.ToArray();
+
+                return View(form);
+            }
+
+            form.Photo.Categories = ctx.Categories.Where(c => form.SelectedCategoriesIds.Contains(c.Id)).ToList();
+
+            ctx.Photos.Add(form.Photo);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Portfolio");
         }
     }
 }

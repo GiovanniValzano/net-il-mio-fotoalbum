@@ -3,6 +3,12 @@
     var photo = Model;
 }
 
-<h2>@photo.Title</h2>
-<p>@photo.Description</p>
-<img src="@photo.ImgSrc"/>
+<div class="content-container">
+    @await Html.PartialAsync("_Navbar")
+    <div class="detail-contaier">
+        <h2>
+            @photo.Title
+        </h2>
+        <p>@photo.Description</p>
+        <img src="@photo.ImgSrc" />
+</div>
