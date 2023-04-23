@@ -134,8 +134,12 @@ main {
     justify-content: center;
 }
 
-.personal-card .text-container .btn-container a {
+.personal-card .text-container .btn-container a button {
     font-size: 17px;
+}
+
+.personal-card .text-container .btn-container button:hover {
+    cursor: pointer;
 }
 
 .content-container {

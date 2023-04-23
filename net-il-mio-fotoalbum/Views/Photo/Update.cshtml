@@ -5,7 +5,7 @@
     <div class="create-container">
         <h2>Nuova Fotografia</h2>
         @Html.AntiForgeryToken()
-        <form method="post" asp-controller="Photo" asp-action="Create">
+        <form method="post" asp-controller="Photo" asp-action="Update">
             <div class="form-part">
                 <label asp-for="Photo.Title" class="form-label">Titolo:</label>
                 <input asp-for="Photo.Title" type="text" class="form-control" id="Title" aria-describedby="Title">
@@ -22,7 +22,7 @@
                 <span asp-validation-for="Photo.ImgSrc" class="text-error"></span>
             </div>
             <div class="form-part">
-                <input class="form-check" type="checkbox" asp-for="Photo.Visible" />
+                <input class="form-check" type="checkbox" checked="@Model.Photo.Visible" asp-for="Photo.Visible" />
                 <label asp-for="Photo.Visible" class="form-label">Pubblico</label>
             </div>
             <div class="form-field">
@@ -30,12 +30,12 @@
                 @foreach (var cat in Model.Categories)
                 {
                     <div class="flex gap">
-                        <input value="@cat.Id" id="@cat.Id" name="SelectedCategoriesIds" type="checkbox" />
+                        <input value="@cat.Id" checked="@Model.SelectedCategoriesIds.Contains(cat.Id)" id="@cat.Id" name="SelectedCategoriesIds" type="checkbox" />
                         <label for="@cat.Id">@cat.Name</label>
                     </div>
                 }
             </div>
-            <button type="submit">Crea</button>
+            <button type="submit">Aggiorna</button>
         </form>
     </div>
 </div>

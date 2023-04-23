@@ -8,8 +8,11 @@
     <div class="text-container">
         <h2>@photo.Title</h2>
         <div class="btn-container">
-            <a href="#" class="personal-btn personal-btn-secondary">Modifica</a>
-            <a class="personal-btn personal-btn-secondary">Elimina</a>
+            <a href="@Url.Action("Update",new { Id = photo.Id})" class="personal-btn personal-btn-secondary">Modifica</a>
+            <form asp-controller="Photo" asp-action="Delete" asp-route-id="@photo.Id" method="post">
+                @Html.AntiForgeryToken()
+                <button class="personal-btn personal-btn-secondary"> Elimina </button>
+            </form>
         </div>
     </div>
 </div>
