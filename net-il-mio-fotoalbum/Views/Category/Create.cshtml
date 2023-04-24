@@ -1,0 +1,16 @@
+﻿@model Category
+
+<div class="content-container">
+    @await Html.PartialAsync("_Navbar")
+    <div class="create-category-container">
+        <h2>Nuova Categoria</h2>
+        <form method="post" asp-controller="Category" asp-action="Create">
+            <div class="form-part">
+                <label asp-for="Name" class="form-label">Titolo:</label>
+                <input asp-for="Name" type="text" class="form-single" id="Title" aria-describedby="Title">
+                <span asp-validation-for="Name" class="text-error"></span>
+            </div>
+            <button class="personal-btn personal-btn-secondary" type="submit">Crea</button>
+        </form>
+    </div>
+</div>

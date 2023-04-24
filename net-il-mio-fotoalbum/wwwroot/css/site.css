@@ -54,11 +54,13 @@ main {
     color: rgba(5, 98, 42, 1);
     background-color: lightgray;
     border: 2px solid rgba(5, 98, 42, 1);
+    transition: 0.3s;
 }
 
 .personal-btn-secondary:hover {
     background-color: white;
     border: 2px solid rgba(5, 98, 42, 1);
+    cursor: pointer;
 }
 
 .home {
@@ -180,6 +182,7 @@ nav {
     border-radius: 10px 10px 0 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 nav .title {
@@ -187,4 +190,109 @@ nav .title {
     font-family: Britannic;
     font-size: 30px;
     margin: 0;
+    text-decoration: none;
+}
+
+.nav-function .single-function {
+    color: rgba(5, 98, 42, 1);
+    font-family: Britannic;
+    font-size: 23px;
+    text-decoration: none;
+    transition: 0.5s;
+    margin-left:10px;
+}
+
+.nav-function .single-function:hover {
+    color: rgb(8, 139, 60, 1);
+    cursor: pointer;
+}
+
+.create-container {
+    padding: 10px 10px 10px 10px;
+    height: calc(100% - 65px);
+    overflow: auto;
+    color: lightgray;
+    font-family: Britannic;
+    letter-spacing: 0.7px;
+}
+
+.create-container .form-part, .create-category-container .form-part {
+    margin-bottom: 10px;
+}
+
+.create-container .text-error, .create-category-container .text-error {
+    color: rgb(194, 42, 37);
+    font-size: 15px;
+}
+
+.create-container .form-label, .create-category-container .form-label {
+    display: block;
+}
+
+.create-container .form-single, .create-category-container .form-single {
+    width: 99%;
+    padding: 3px;
+}
+
+.create-container .form-multi {
+    width: 99%;
+    padding: 3px;
+}
+
+.create-container h4 {
+    margin:0;
+}
+
+.create-container .form-check, .multi-check{
+    margin-bottom: 10px;
+}
+
+.category-container {
+    padding: 10px 10px 10px 10px;
+    height: calc(100% - 65px);
+    overflow: auto;
+    color: lightgray;
+    font-family: Britannic;
+    letter-spacing: 0.7px;
+    text-align:center;
+}
+
+.category-container table {
+    width: 99%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.category-container table tr {
+    height: 40px;
+}
+
+.category-container table tr:nth-child(even) {
+    background-color: rgb(98, 98, 98)
+}
+
+.category-container table th {
+    text-align: center;
+}
+
+.category-container table td {
+    padding: 0 10px 0 10px;
+}
+
+.category-container table .table-btn-cont {
+    width: 180px;
+}
+
+.category-container table .table-btn-cont form{
+    display: inline-block;
+}
+
+.create-category-container {
+    padding: 10px 10px 10px 10px;
+    height: calc(100% - 65px);
+    overflow: auto;
+    color: lightgray;
+    font-family: Britannic;
+    letter-spacing: 0.7px;
 }

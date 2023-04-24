@@ -3,30 +3,31 @@
 <div class="content-container">
     @await Html.PartialAsync("_Navbar")
     <div class="create-container">
-        <h2>Nuova Fotografia</h2>
+        <h2>@Model.Photo.Title</h2>
         @Html.AntiForgeryToken()
         <form method="post" asp-controller="Photo" asp-action="Update">
             <div class="form-part">
                 <label asp-for="Photo.Title" class="form-label">Titolo:</label>
-                <input asp-for="Photo.Title" type="text" class="form-control" id="Title" aria-describedby="Title">
+                <input asp-for="Photo.Title" type="text" class="form-single" id="Title" aria-describedby="Title">
                 <span asp-validation-for="Photo.Title" class="text-error"></span>
             </div>
             <div class="form-part">
                 <label asp-for="Photo.Description" class="form-label">Descrizione:</label>
-                <input asp-for="Photo.Description" type="text" class="form-control" id="Description" aria-describedby="Description">
+                <input asp-for="Photo.Description" type="text" class="form-multi" id="Description" aria-describedby="Description">
                 <span asp-validation-for="Photo.Description" class="text-error"></span>
             </div>
             <div class="form-part">
                 <label asp-for="Photo.ImgSrc" class="form-label">Link Immagine:</label>
-                <input asp-for="Photo.ImgSrc" class="form-control" id="ImgSrc" aria-describedby="ImgSrc">
+                <input asp-for="Photo.ImgSrc" class="form-single" id="ImgSrc" aria-describedby="ImgSrc">
                 <span asp-validation-for="Photo.ImgSrc" class="text-error"></span>
             </div>
+            <h4>Visibilità:</h4>
             <div class="form-part">
                 <input class="form-check" type="checkbox" checked="@Model.Photo.Visible" asp-for="Photo.Visible" />
-                <label asp-for="Photo.Visible" class="form-label">Pubblico</label>
+                <label asp-for="Photo.Visible" class="">Pubblico</label>
             </div>
-            <div class="form-field">
-                <label for="SelectedCategoriesIds">Tags</label>
+            <div class="form-field multi-check">
+                <label for="SelectedCategoriesIds">Categorie</label>
                 @foreach (var cat in Model.Categories)
                 {
                     <div class="flex gap">
@@ -35,7 +36,7 @@
                     </div>
                 }
             </div>
-            <button type="submit">Aggiorna</button>
+            <button class="personal-btn personal-btn-secondary" type="submit">Aggiorna</button>
         </form>
     </div>
 </div>

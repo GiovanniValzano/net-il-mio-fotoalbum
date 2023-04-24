@@ -1,3 +1,7 @@
 ﻿<nav>
-    <a class="title">Album</a>
+    <a href="@Url.Action("Portfolio", "Photo")" class="title">Album</a>
+    <div class="nav-function">
+        <a class="single-function" href="@Url.Action("Create", "Photo")">Nuova Foto</a>
+        <a class="single-function" href="@Url.Action("Index", "Category")">Categorie</a>
+    </div>
 </nav>
