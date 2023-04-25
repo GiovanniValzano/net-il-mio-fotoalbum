@@ -1,7 +1,22 @@
-﻿<nav>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<nav>
     <a href="@Url.Action("Portfolio", "Photo")" class="title">Album</a>
     <div class="nav-function">
-        <a class="single-function" href="@Url.Action("Create", "Photo")">Nuova Foto</a>
-        <a class="single-function" href="@Url.Action("Index", "Category")">Categorie</a>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a class="single-function" href="@Url.Action("Create", "Photo")">Nuova Foto</a>
+            <a class="single-function" href="@Url.Action("Index", "Category")">Categorie</a>
+            <form id="logoutForm" class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Photo", new { area = "" })">
+                <button id="logout" type="submit" class="single-function">Logout</button>
+            </form>
+        }
+        else
+        {
+            <a class="single-function" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        }
     </div>
 </nav>

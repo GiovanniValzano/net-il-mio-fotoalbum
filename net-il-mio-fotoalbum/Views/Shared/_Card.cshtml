@@ -1,4 +1,8 @@
-﻿@model Photo
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model Photo
 @{
     var photo = Model;
 }
@@ -7,12 +11,17 @@
     <a href="@Url.Action("Detail",new { Id = photo.Id})"><img src="@photo.ImgSrc" /></a>
     <div class="text-container">
         <h2>@photo.Title</h2>
-        <div class="btn-container">
-            <a href="@Url.Action("Update",new { Id = photo.Id})" class="personal-btn personal-btn-secondary">Modifica</a>
-            <form asp-controller="Photo" asp-action="Delete" asp-route-id="@photo.Id" method="post">
-                @Html.AntiForgeryToken()
-                <button class="personal-btn personal-btn-secondary"> Elimina </button>
-            </form>
-        </div>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="btn-container">
+                <a href="@Url.Action("Update",new { Id = photo.Id})" class="personal-btn personal-btn-secondary">Modifica</a>
+                <form asp-controller="Photo" asp-action="Delete" asp-route-id="@photo.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button class="personal-btn personal-btn-secondary"> Elimina </button>
+                </form>
+            </div>
+
+        }
     </div>
 </div>

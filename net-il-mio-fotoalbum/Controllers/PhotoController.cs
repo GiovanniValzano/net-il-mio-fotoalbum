@@ -43,6 +43,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(photo);
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             using var ctx = new PhotoContext();
@@ -54,6 +55,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(formModel);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PhotoFormModel form)
@@ -75,6 +77,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return RedirectToAction("Portfolio");
         }
 
+        [Authorize]
         public IActionResult Update(int id)
         {
             using var ctx = new PhotoContext();
@@ -96,6 +99,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return View(formModel);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, PhotoFormModel form)
@@ -127,6 +131,7 @@ namespace net_il_mio_fotoalbum.Controllers
             return RedirectToAction("Portfolio");
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)

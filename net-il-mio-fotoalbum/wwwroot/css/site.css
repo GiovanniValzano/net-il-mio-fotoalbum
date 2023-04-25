@@ -207,6 +207,17 @@ nav .title {
     cursor: pointer;
 }
 
+.nav-function button {
+    text-decoration: none;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.nav-function form {
+    display: inline-block;
+}
+
 .create-container {
     padding: 10px 10px 10px 10px;
     height: calc(100% - 65px);
@@ -220,7 +231,7 @@ nav .title {
     margin-bottom: 10px;
 }
 
-.create-container .text-error, .create-category-container .text-error {
+.create-container .text-error, .create-category-container .text-error, .login-container .text-error {
     color: rgb(194, 42, 37);
     font-size: 15px;
 }
@@ -295,4 +306,39 @@ nav .title {
     color: lightgray;
     font-family: Britannic;
     letter-spacing: 0.7px;
+}
+
+.login-container {
+    padding: 10px 10px 10px 10px;
+    height: calc(100% - 65px);
+    overflow: auto;
+    color: lightgray;
+    font-family: Britannic;
+    letter-spacing: 0.7px;
+}
+
+.login-container h1 {
+    margin: 0 0 10px 0; 
+    font-size: 30px;
+}
+
+.login-container h2 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+}
+
+.login-container .form-part {
+    margin-bottom: 10px;
+}
+
+.login-container .form-label {
+    display: block;
+}
+
+.login-container .btn-container {
+    text-align: center;
+}
+
+.login-container button {
+    font-size: 15px;
 }
