@@ -1,4 +1,9 @@
-﻿@model Photo[]
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model Photo[]
 @{
     var photos = Model;
 }
@@ -6,9 +11,22 @@
 <div class="content-container">
     @await Html.PartialAsync("_Navbar")
     <div class="portfolio-container">
-        @foreach (var photo in photos)
+        @if (SignInManager.IsSignedIn(User))
         {
-            @await Html.PartialAsync("_Card", photo)
+            @foreach (var photo in photos)
+            {
+                @await Html.PartialAsync("_Card", photo)
+            }
+        }
+        else
+        {
+            @foreach (var photo in photos)
+            {
+                if (photo.Visible == true)
+                {
+                    @await Html.PartialAsync("_Card", photo)                    
+                }
+            }
         }
     </div>
 </div>

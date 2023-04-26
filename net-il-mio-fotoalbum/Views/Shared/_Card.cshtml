@@ -21,7 +21,14 @@
                     <button class="personal-btn personal-btn-secondary"> Elimina </button>
                 </form>
             </div>
-
+            @if (photo.Visible == true)
+            {
+                <p>Pubblico</p>
+            }
+            else
+            {
+                <p style="color:darkred">Privato</p>
+            }
         }
     </div>
 </div>

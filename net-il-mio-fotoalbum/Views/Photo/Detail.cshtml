@@ -11,19 +11,13 @@
         </h2>
         <p>@photo.Description</p>
         <img src="@photo.ImgSrc" />
-        @if (photo.Visible == true)
-        {
-            <p>Pubblico</p>
-        }
-        else
-        {
-            <p>Privato</p>
-        }
         @if (photo.Categories.Any())
         {
+            <h3>Categorie:</h3>
             foreach (Category cat in photo.Categories)
             {
                 <p>@cat.Name</p>
             }
         }
     </div>
+</div>
