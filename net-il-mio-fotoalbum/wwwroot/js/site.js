@@ -2,3 +2,58 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+
+const loadPhotos = filter => getPhotos(filter)
+    .then(photos => {
+        renderPhoto(photos);
+        initButtons();
+    });
+
+const getPhotos = title => axios
+    .get('/api/photo', title ? { params: { title } } : {})
+    .then(res => res.data);
+
+const renderPhoto = photos => {
+    const photosContainer = document.querySelector(".portfolio-container");
+
+    photosContainer.innerHTML = photos.map(photoComponent).join('');
+
+    const btnContainers = document.querySelectorAll(".btn-container");
+    if (auth) {
+        btnContainers.forEach(cont => cont.classList.remove("hide"))
+    }
+};
+
+const photoComponent = photo => `
+    <div class="personal-card">
+        <a href="/Photo/Detail/${photo.id}"><img src="${photo.imgSrc}" /></a>
+        <div class="text-container">
+            <h2>${photo.title}</h2>
+            <div class="btn-container hide">
+                <a href="/Photo/Update/${photo.id}" class="personal-btn personal-btn-secondary">Modifica</a>
+                <button class="personal-btn personal-btn-secondary delete-button" id="delete-button-${photo.id}"> Elimina </button>
+            </div>
+        </div>
+    </div>`;
+
+const initFilter = () => {
+    const filter = document.querySelector("#photos-filter input");
+    filter.addEventListener("input", (e) => loadPhotos(e.target.value))
+};
+
+const deletePhoto = id => axios
+    .delete(`/api/photo/${id}`)
+    .then(() => loadPhotos())
+
+const initButtons = () => {
+    const deleteButtons = document.querySelectorAll(".delete-button");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const id = Number(button.id.split("-")[2]);
+            deletePhoto(id);
+        });
+    })
+};

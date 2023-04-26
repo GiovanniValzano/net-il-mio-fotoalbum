@@ -3,30 +3,22 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@model Photo[]
-@{
-    var photos = Model;
-}
-
 <div class="content-container">
     @await Html.PartialAsync("_Navbar")
+    <div id="photos-filter">
+        <div class="form-field">
+            <label>Filtra per titolo:</label>
+            <input placeholder="Titolo" />
+        </div>
+    </div>
     <div class="portfolio-container">
-        @if (SignInManager.IsSignedIn(User))
-        {
-            @foreach (var photo in photos)
-            {
-                @await Html.PartialAsync("_Card", photo)
-            }
-        }
-        else
-        {
-            @foreach (var photo in photos)
-            {
-                if (photo.Visible == true)
-                {
-                    @await Html.PartialAsync("_Card", photo)                    
-                }
-            }
-        }
+
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        loadPhotos();
+        initFilter();
+    </script>
+}

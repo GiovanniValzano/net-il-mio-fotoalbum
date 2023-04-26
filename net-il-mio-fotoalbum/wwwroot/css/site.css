@@ -342,3 +342,30 @@ nav .title {
 .login-container button {
     font-size: 15px;
 }
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: inline-block;
+}
+
+#photos-filter {
+    padding: 10px 10px 0 10px;
+    color:white;
+    font-family: Britannic;
+}
+
+#photos-filter label {
+    font-size: 23px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#photos-filter input {
+    border: none;
+    padding: 5px;
+    width: 99%;
+    border-radius: 5px;
+}

@@ -24,10 +24,7 @@ namespace net_il_mio_fotoalbum.Controllers
 
         public IActionResult Portfolio()
         {
-            using var ctx = new PhotoContext();
-            var photos = ctx.Photos.Include(p => p.Categories).ToArray();
-
-            return View(photos);
+            return View();
         }
 
         public IActionResult Detail(int id)
