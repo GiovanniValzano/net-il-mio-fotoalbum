@@ -1,4 +1,8 @@
-﻿@model Photo
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model Photo
 @{
     var photo = Model;
 }
@@ -19,5 +23,24 @@
                 <p>@cat.Name</p>
             }
         }
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="btn-container">
+                <a href="@Url.Action("Update",new { Id = photo.Id})" class="personal-btn personal-btn-secondary">Modifica</a>
+                <form asp-controller="Photo" asp-action="Delete" asp-route-id="@photo.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <button class="personal-btn personal-btn-secondary"> Elimina </button>
+                </form>
+            </div>
+            @if (photo.Visible == true)
+            {
+                <p>Visibilità: Pubblico</p>
+            }
+            else
+            {
+                <p>Visibilità: <span style="color:darkred">Privato</span></p>
+            }
+        }
+
     </div>
 </div>

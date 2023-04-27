@@ -19,11 +19,6 @@ const renderPhoto = photos => {
     const photosContainer = document.querySelector(".portfolio-container");
 
     photosContainer.innerHTML = photos.map(photoComponent).join('');
-
-    const btnContainers = document.querySelectorAll(".btn-container");
-    if (auth) {
-        btnContainers.forEach(cont => cont.classList.remove("hide"))
-    }
 };
 
 const photoComponent = photo => `
@@ -31,10 +26,6 @@ const photoComponent = photo => `
         <a href="/Photo/Detail/${photo.id}"><img src="${photo.imgSrc}" /></a>
         <div class="text-container">
             <h2>${photo.title}</h2>
-            <div class="btn-container hide">
-                <a href="/Photo/Update/${photo.id}" class="personal-btn personal-btn-secondary">Modifica</a>
-                <button class="personal-btn personal-btn-secondary delete-button" id="delete-button-${photo.id}"> Elimina </button>
-            </div>
         </div>
     </div>`;
 

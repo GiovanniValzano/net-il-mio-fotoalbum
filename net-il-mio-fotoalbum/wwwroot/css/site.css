@@ -130,17 +130,18 @@ main {
     margin-bottom: 15px;
 }
 
-.personal-card .text-container .btn-container {
+.detail-contaier .btn-container {
     display: flex;
     column-gap: 15px;
     justify-content: center;
+    margin-top: 10px;
 }
 
-.personal-card .text-container .btn-container a button {
+.detail-contaier .btn-container a button {
     font-size: 17px;
 }
 
-.personal-card .text-container .btn-container button:hover {
+.detail-contaier .btn-container button:hover {
     cursor: pointer;
 }
 
