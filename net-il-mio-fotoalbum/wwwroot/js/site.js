@@ -48,3 +48,40 @@ const initButtons = () => {
         });
     })
 };
+
+// Message;
+
+const postMessage = message => axios
+    .post("/api/Message", message)
+    .then(() => location.href = "/photo/portfolio")
+    .catch(err => renderErrors(err.response.data.errors));
+
+const initMessageForm = () => {
+    const form = document.querySelector("#message-create-form");
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const message = getMessageFromForm(form);
+        postMessage(message);
+    });
+};
+
+const getMessageFromForm = form => {
+    const email = form.querySelector("#email").value;
+    const textMessage = form.querySelector("#textMessage").value;
+
+    return {
+        id: 0,
+        email,
+        textMessage,
+    };
+};
+
+const renderErrors = errors => {
+    const emailErrors = document.querySelector("#email-errors");
+    const textMessageErrors = document.querySelector("#textMessage-errors");
+
+    emailErrors.innerText = errors.Email?.join("\n") ?? "";
+    textMessageErrors.innerText = errors.TextMessage?.join("\n") ?? "";
+};

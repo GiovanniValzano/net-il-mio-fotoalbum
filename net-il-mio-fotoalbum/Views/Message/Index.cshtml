@@ -1,0 +1,34 @@
+﻿@model Message[]
+@{
+    var messages = Model;
+}
+
+<div class="content-container">
+    @await Html.PartialAsync("_Navbar")
+    <div class="category-container">
+        <table>
+            <tr>
+                <th colspan="3">Messaggi</th>
+            </tr>
+            @if (!messages.Any())
+            {
+                <tr>
+                    <td colspan="3" style="text-align: center">Nessun messaggio</td>
+                </tr>
+            }
+            @foreach (Message mes in messages)
+            {
+                <tr>
+                    <td>@mes.Email</td>
+                    <td>@mes.TextMessage</td>
+                    <td class="table-btn-cont">
+                        <form asp-controller="Message" asp-action="Delete" asp-route-id="@mes.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <button class="personal-btn personal-btn-secondary">Elimina</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

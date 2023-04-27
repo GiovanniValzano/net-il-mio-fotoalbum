@@ -1,0 +1,25 @@
+﻿<div class="content-container">
+    @await Html.PartialAsync("_Navbar")
+    <div class="create-container">
+        <h2>Invia un messaggio</h2>
+        <form id="message-create-form">
+            <div class="form-part">
+                <label class="form-label" for="email">Email:</label>
+                <input class="form-single" id="email" />
+                <span id="email-errors" class="text-error"></span>
+            </div>
+            <div class="form-part">
+                <label class="form-label" for="textMessage">Messaggio:</label>
+                <input class="form-single" id="textMessage" />
+                <span id="textMessage-errors" class="text-error"></span>
+            </div>
+            <button class="personal-btn personal-btn-secondary" type="submit">Invia</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        initMessageForm();
+    </script>
+}

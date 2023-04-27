@@ -10,12 +10,14 @@
         {
             <a class="single-function" href="@Url.Action("Create", "Photo")">Nuova Foto</a>
             <a class="single-function" href="@Url.Action("Index", "Category")">Categorie</a>
+            <a class="single-function" href="@Url.Action("Index", "Message")">Messaggi</a>
             <form id="logoutForm" class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Photo", new { area = "" })">
                 <button id="logout" type="submit" class="single-function">Logout</button>
             </form>
         }
         else
         {
+            <a class="single-function" href="@Url.Action("Send", "Message")">Contatta</a>
             <a class="single-function" id="login" asp-area="Identity" asp-page="/Account/Login">Accedi</a>
         }
     </div>

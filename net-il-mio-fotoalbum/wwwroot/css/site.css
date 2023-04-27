@@ -290,6 +290,8 @@ nav .title {
 
 .category-container table td {
     padding: 0 10px 0 10px;
+    overflow-wrap: break-word;
+    max-width: 550px;
 }
 
 .category-container table .table-btn-cont {
